@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PWA Галерея</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log("Service Worker зарегистрирован", reg))
+                .catch(err => console.log("Ошибка регистрации Service Worker", err));
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin: 20px;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Моя Галерея</h1>
+    <div class="gallery">
+        <img src="images/photo1.jpg" alt="Фото 1">
+        <img src="images/photo2.jpg" alt="Фото 2">
+        <img src="images/photo3.jpg" alt="Фото 3">
+        <img src="images/photo4.jpg" alt="Фото 4">
+        <img src="images/photo5.jpg" alt="Фото 5">
+    </div>
+    <script>
+        // Service Worker (service-worker.js)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(() => console.log("Service Worker зарегистрирован!"))
+                .catch(err => console.error("Ошибка регистрации SW:", err));
+        }
+    </script>
+</body>
+</html>
